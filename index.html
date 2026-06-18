@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Stölner GmbH — Balanced Scorecard · Strategie sichtbar machen</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23E5007D'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='Arial,Helvetica,sans-serif' font-size='19' font-weight='bold' fill='white'%3ES%3C/text%3E%3C/svg%3E">
+<meta name="theme-color" content="#E5007D">
 <style>
 :root{
   --fin:#C0392B;--fin-l:#FDEDEC;
@@ -220,7 +222,7 @@ textarea{resize:vertical;}
   <div class="header-spacer"></div>
   <select class="year-select" id="yearSelect" onchange="switchYear(this.value)"></select>
   <button class="btn btn-primary" onclick="saveData()">Speichern</button>
-  <button class="btn btn-sm" onclick="downloadUpdated()" title="index.html für GitHub herunterladen">↓ index.html</button>
+  <button class="btn btn-sm" onclick="downloadUpdated()" title="Aktuellen Stand als index.html für das Team erzeugen">Für Team veröffentlichen ↓</button>
 </div>
 
 <div class="level-nav" id="levelNav"></div>
@@ -302,6 +304,7 @@ textarea{resize:vertical;}
 
 <div class="toast" id="toast">✓ Gespeichert</div>
 
+<script id="bscPublished" type="application/json">null</script>
 <script>
 const STORAGE_KEY = 'stoelner_bsc_2level_v2';
 let seq = 100;
@@ -425,12 +428,19 @@ function ensureShape(d){
   if(!d.promises) d.promises = JSON.parse(JSON.stringify(DEFAULT_DATA["2026"].promises));
 }
 function loadData(){
-  try{ const s=localStorage.getItem(STORAGE_KEY); bscData = s ? JSON.parse(s) : JSON.parse(JSON.stringify(DEFAULT_DATA)); }
-  catch(e){ bscData = JSON.parse(JSON.stringify(DEFAULT_DATA)); }
+  let pub=null, loc=null;
+  try{ const el=document.getElementById('bscPublished'); const t=el?el.textContent.trim():''; if(t && t!=='null') pub=JSON.parse(t); }catch(e){}
+  try{ const s=localStorage.getItem(STORAGE_KEY); if(s){ const o=JSON.parse(s); loc = (o && o.data) ? {ts:o.savedAt||0, data:o.data} : {ts:0, data:o}; } }catch(e){}
+  const pubTs = pub ? (pub.publishedAt||0) : -1;
+  const locTs = loc ? loc.ts : -1;
+  if(pub && pubTs>=locTs) bscData = pub.data;
+  else if(loc) bscData = loc.data;
+  else if(pub) bscData = pub.data;
+  else bscData = JSON.parse(JSON.stringify(DEFAULT_DATA));
   Object.values(bscData).forEach(ensureShape);
 }
 function saveData(){
-  try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(bscData)); toast('✓ Gespeichert'); }
+  try{ localStorage.setItem(STORAGE_KEY, JSON.stringify({savedAt:Date.now(), data:bscData})); toast('✓ Gespeichert (lokaler Entwurf)'); }
   catch(e){ alert('LocalStorage voll — bitte JSON-Export nutzen.'); }
 }
 function toast(msg,color){
@@ -770,11 +780,13 @@ function importJSON(e){ const f=e.target.files[0]; if(!f)return; const r=new Fil
 
 function downloadUpdated(){
   saveData();
+  const el=document.getElementById('bscPublished');
+  if(el) el.textContent = JSON.stringify({publishedAt:Date.now(), data:bscData}).replace(/</g,'\\u003c');
   const html='<!DOCTYPE html>\n'+document.documentElement.outerHTML;
   const blob=new Blob([html],{type:'text/html;charset=utf-8'});
   const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='index.html'; a.click();
   setTimeout(()=>URL.revokeObjectURL(a.href),5000);
-  toast('↓ index.html gespeichert — jetzt auf GitHub hochladen','#1A5F9E');
+  toast('↓ index.html erzeugt — jetzt auf GitHub hochladen, dann sieht das Team den Stand','#1A5F9E');
 }
 
 // ── INIT ───────────────────────────────────────────────────────────────────
