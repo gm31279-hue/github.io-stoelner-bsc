@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="de"><head>
+<html lang="de">
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Stölner GmbH — Balanced Scorecard · Strategie sichtbar machen</title>
@@ -206,195 +207,33 @@ textarea{resize:vertical;}
 
 <div class="header">
   <div class="brand">
-    <img src="logo.png" alt="Stölner" onerror="this.style.display='none';document.getElementById('brandFb').style.display='inline-flex';" style="display: none;">
-    <span class="brand-fallback" id="brandFb" style="display: inline-flex; align-items: center; gap: 9px;">
+    <img src="logo.png" alt="Stölner" onerror="this.style.display='none';document.getElementById('brandFb').style.display='inline-flex';">
+    <span class="brand-fallback" id="brandFb" style="display:none;align-items:center;gap:9px;">
       <svg width="30" height="30" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <circle cx="24" cy="24" r="21" stroke="#E5007D" stroke-width="4"></circle>
-        <path d="M32 16.5c-2.6-2.8-11-3-12.6 1.6-1.3 3.8 3.4 5 6.8 6s7.3 2.2 6 6.4c-1.5 4.6-10 4.4-12.8 1.4" stroke="#E5007D" stroke-width="4.5" stroke-linecap="round"></path>
+        <circle cx="24" cy="24" r="21" stroke="#E5007D" stroke-width="4"/>
+        <path d="M32 16.5c-2.6-2.8-11-3-12.6 1.6-1.3 3.8 3.4 5 6.8 6s7.3 2.2 6 6.4c-1.5 4.6-10 4.4-12.8 1.4" stroke="#E5007D" stroke-width="4.5" stroke-linecap="round"/>
       </svg>
       <span style="font:800 25px/1 -apple-system,'Segoe UI',Roboto,sans-serif;color:#E5007D;letter-spacing:-.5px;font-style:italic;">stoelner</span>
     </span>
     <span class="brand-sub">Balanced Scorecard · Strategie sichtbar machen</span>
   </div>
   <div class="header-spacer"></div>
-  <select class="year-select" id="yearSelect" onchange="switchYear(this.value)"><option value="2026" selected="">2026</option></select>
+  <select class="year-select" id="yearSelect" onchange="switchYear(this.value)"></select>
   <button class="btn btn-primary" onclick="saveData()">Speichern</button>
   <button class="btn btn-sm" onclick="downloadUpdated()" title="index.html für GitHub herunterladen">↓ index.html</button>
 </div>
 
-<div class="level-nav" id="levelNav"><button class="level-tab corp active" onclick="selectLevel('corp')">Unternehmen</button><span class="level-sep">·</span><button class="level-tab " onclick="selectLevel('walter')">Walter</button><button class="level-tab " onclick="selectLevel('sabrina')">Sabrina</button><button class="level-tab " onclick="selectLevel('christian')">Christian</button><button class="level-tab " onclick="selectLevel('thomas')">Thomas</button><button class="level-tab " onclick="selectLevel('gerhard')">Gerhard</button><button class="level-tab " onclick="selectLevel('klaus')">Klaus</button><button class="level-tab " onclick="selectLevel('wolfgang')">Wolfgang</button><button class="level-tab " onclick="selectLevel('othmar')">Othmar</button></div>
-<div class="mode-nav" id="modeNav"><button class="mode-tab " onclick="selectMode('dashboard')">Stölner-Scorecard</button><button class="mode-tab " onclick="selectMode('verdichtung')">Verdichtung</button><button class="mode-tab active" onclick="selectMode('edit')">Bearbeiten</button><button class="mode-tab " onclick="selectMode('presentation')">Präsentation</button><button class="mode-tab " onclick="selectMode('archiv')">Jahresarchiv</button></div>
+<div class="level-nav" id="levelNav"></div>
+<div class="mode-nav" id="modeNav"></div>
 
 <!-- ===== CORP: STÖLNER-SCORECARD (Ebene 1 / GF) ===== -->
-<div class="main section hidden" id="sec-dashboard">
-  <div class="lvl-banner"><span class="lvl-tag">Ebene 1 · Geschäftsführung</span><span class="lvl-h">Stölner-Scorecard <span id="dashYear" style="color:var(--accent);">2026</span></span></div>
-  <div class="dash-summary" id="dashSummary">
-    <div class="sum-card"><div class="sum-label">Strategische Ziele</div><div class="sum-val neu">14</div><div class="sum-sub">Geschäftsjahr 2026</div></div>
-    <div class="sum-card"><div class="sum-label">Auf Kurs</div><div class="sum-val ok">4</div><div class="sum-sub">29% aller Ziele</div></div>
-    <div class="sum-card"><div class="sum-label">Im Plan</div><div class="sum-val warn">9</div><div class="sum-sub">Beobachtung erforderlich</div></div>
-    <div class="sum-card"><div class="sum-label">Handlungsbedarf</div><div class="sum-val crit">1</div><div class="sum-sub">Maßnahmen nötig</div></div></div>
+<div class="main section" id="sec-dashboard">
+  <div class="lvl-banner"><span class="lvl-tag">Ebene 1 · Geschäftsführung</span><span class="lvl-h">Stölner-Scorecard <span id="dashYear" style="color:var(--accent);"></span></span></div>
+  <div class="dash-summary" id="dashSummary"></div>
   <div class="section-title">Finanzkennzahlen &amp; Unternehmens-KPIs</div>
-  <div class="kpi-cards" id="kpiCards"><div class="kpi-card fin">
-      <div class="kpi-card-name">Gesamteinnahmen (Plan)</div>
-      <div class="kpi-vals"><span class="kpi-ist ok">14,33 M</span><span class="kpi-ziel">/ 14,30 M €</span></div>
-      <div class="kpi-bar-wrap"><div class="kpi-bar" style="width:100%;background:var(--ok);"></div></div>
-      <div class="kpi-delta neg">-2.5% vs. Plan 2025</div>
-    </div><div class="kpi-card fin">
-      <div class="kpi-card-name">EBIT</div>
-      <div class="kpi-vals"><span class="kpi-ist n">—</span><span class="kpi-ziel">/ 383 K €</span></div>
-      <div class="kpi-bar-wrap"><div class="kpi-bar" style="width:0%;background:#BDC3C7;"></div></div>
-      <div class="kpi-delta pos">+8% vs. Plan 2025</div>
-    </div><div class="kpi-card fin">
-      <div class="kpi-card-name">Service-Umsatz</div>
-      <div class="kpi-vals"><span class="kpi-ist n">—</span><span class="kpi-ziel">/ 2,30 M €</span></div>
-      <div class="kpi-bar-wrap"><div class="kpi-bar" style="width:0%;background:#BDC3C7;"></div></div>
-      <div class="kpi-delta pos">+4.5% vs. Plan 2025</div>
-    </div><div class="kpi-card fin">
-      <div class="kpi-card-name">Rohertrag</div>
-      <div class="kpi-vals"><span class="kpi-ist n">—</span><span class="kpi-ziel">/ 5,16 M €</span></div>
-      <div class="kpi-bar-wrap"><div class="kpi-bar" style="width:0%;background:#BDC3C7;"></div></div>
-      <div class="kpi-delta pos">+0.3% vs. Plan 2025</div>
-    </div><div class="kpi-card fin">
-      <div class="kpi-card-name">HW-Vertrieb</div>
-      <div class="kpi-vals"><span class="kpi-ist n">—</span><span class="kpi-ziel">/ 12,00 M €</span></div>
-      <div class="kpi-bar-wrap"><div class="kpi-bar" style="width:0%;background:#BDC3C7;"></div></div>
-      <div class="kpi-delta neg">-4% vs. Plan 2025</div>
-    </div><div class="kpi-card fin">
-      <div class="kpi-card-name">Materialkosten</div>
-      <div class="kpi-vals"><span class="kpi-ist n">—</span><span class="kpi-ziel">/ 9,24 M €</span></div>
-      <div class="kpi-bar-wrap"><div class="kpi-bar" style="width:0%;background:#BDC3C7;"></div></div>
-      <div class="kpi-delta pos">-4% vs. Plan 2025</div>
-    </div><div class="kpi-card kun">
-      <div class="kpi-card-name">NPS Kundenzufriedenheit</div>
-      <div class="kpi-vals"><span class="kpi-ist warn">52,3</span><span class="kpi-ziel">/ 65 Pkt.</span></div>
-      <div class="kpi-bar-wrap"><div class="kpi-bar" style="width:81%;background:var(--warn);"></div></div>
-      <div class="kpi-delta neu">Ziel: 65 Pkt.</div>
-    </div><div class="kpi-card ler">
-      <div class="kpi-card-name">MA-Zufriedenheit (Teamecho)</div>
-      <div class="kpi-vals"><span class="kpi-ist warn">68</span><span class="kpi-ziel">/ 75 Pkt.</span></div>
-      <div class="kpi-bar-wrap"><div class="kpi-bar" style="width:91%;background:var(--warn);"></div></div>
-      <div class="kpi-delta neu">Ziel: 75 Pkt.</div>
-    </div></div>
+  <div class="kpi-cards" id="kpiCards"></div>
   <div class="section-title">Strategische Zielkarte — vier Perspektiven, vier Werte</div>
-  <div id="dashPerspectives"><div class="persp-block">
-      <div class="persp-head"><span class="persp-badge fin">Finanzen</span><span class="persp-wert">Wert: Ertragsorientierung</span><span class="persp-leitfrage">Verdienen wir gut, wirtschaften wir solide?</span></div>
-      <div class="persp-goals" style="grid-template-columns:repeat(4,1fr);">
-        
-          <div class="goal-card">
-            <div class="goal-head"><div class="goal-title">EBIT steigern</div><div class="goal-sub">Ziel 2026: 382.532 € (+8% vs. 2025)</div></div>
-            <div class="goal-status-bar"><div class="status-bar-fill" style="width:100%;background:var(--warn);opacity:.6;"></div></div>
-            <div class="goal-body">
-              <div class="measure-row"><div class="m-dot warn"></div><span class="m-text">Gesamteinnahmen Plan: 14,3 Mio. €</span><span class="m-type sp">Spät</span></div><div class="measure-row"><div class="m-dot crit"></div><span class="m-text">Umsatz steigern (HW + Service)</span><span class="m-type fr">Früh</span></div><div class="measure-row"><div class="m-dot warn"></div><span class="m-text">Deckungsbeitrag erhöhen</span><span class="m-type fr">Früh</span></div><div class="measure-row"><div class="m-dot ok"></div><span class="m-text">Materialeinsatz -4% auf 9,24 Mio. €</span><span class="m-type fr">Früh</span></div>
-            </div>
-          </div>
-          <div class="goal-card">
-            <div class="goal-head"><div class="goal-title">Umsatz steigern</div><div class="goal-sub">Betriebsleistung / Gesamteinnahmen</div></div>
-            <div class="goal-status-bar"><div class="status-bar-fill" style="width:100%;background:var(--warn);opacity:.6;"></div></div>
-            <div class="goal-body">
-              <div class="measure-row"><div class="m-dot ok"></div><span class="m-text">Bekanntheitsgrad steigern</span><span class="m-type fr">Früh</span></div><div class="measure-row"><div class="m-dot warn"></div><span class="m-text">Web-Shop Ausbau (Ziel: 1 Mio. €)</span><span class="m-type fr">Früh</span></div><div class="measure-row"><div class="m-dot warn"></div><span class="m-text">Service-Umsatz +4,5% auf 2,3 Mio. €</span><span class="m-type sp">Spät</span></div>
-            </div>
-          </div>
-          <div class="goal-card">
-            <div class="goal-head"><div class="goal-title">Deckungsbeitrag erhöhen</div><div class="goal-sub">Rohertrag Ziel: 5,16 Mio. € (+0,3%)</div></div>
-            <div class="goal-status-bar"><div class="status-bar-fill" style="width:100%;background:var(--warn);opacity:.6;"></div></div>
-            <div class="goal-body">
-              <div class="measure-row"><div class="m-dot warn"></div><span class="m-text">Rohertrag Plan 2026: 5.158.044 €</span><span class="m-type sp">Spät</span></div><div class="measure-row"><div class="m-dot warn"></div><span class="m-text">HW-Vertrieb: 12 Mio. € (−4% vs. 2025)</span><span class="m-type fr">Früh</span></div><div class="measure-row"><div class="m-dot ok"></div><span class="m-text">Marketingkosten: −5% auf 190.000 €</span><span class="m-type fr">Früh</span></div>
-            </div>
-          </div>
-          <div class="goal-card">
-            <div class="goal-head"><div class="goal-title">Cashflow optimieren</div><div class="goal-sub">Kosten senken &amp; Reporting</div></div>
-            <div class="goal-status-bar"><div class="status-bar-fill" style="width:100%;background:var(--ok);opacity:.6;"></div></div>
-            <div class="goal-body">
-              <div class="measure-row"><div class="m-dot ok"></div><span class="m-text">Verwaltungskosten: −3,4% auf 1,36 Mio. €</span><span class="m-type fr">Früh</span></div><div class="measure-row"><div class="m-dot ok"></div><span class="m-text">Materialeinsatz: −385.145 € Einsparung</span><span class="m-type fr">Früh</span></div><div class="measure-row"><div class="m-dot ok"></div><span class="m-text">Standardisiertes Reporting aktiv</span><span class="m-type fr">Früh</span></div>
-            </div>
-          </div>
-      </div>
-    </div><div class="persp-block">
-      <div class="persp-head"><span class="persp-badge kun">Kunden</span><span class="persp-wert">Wert: Kundenorientierung</span><span class="persp-leitfrage">Sind unsere Kunden zufrieden, kommen sie wieder?</span></div>
-      <div class="persp-goals" style="grid-template-columns:repeat(4,1fr);">
-        
-          <div class="goal-card">
-            <div class="goal-head"><div class="goal-title">Bekanntheitsgrad steigern</div><div class="goal-sub">Marketing &amp; Sichtbarkeit</div></div>
-            <div class="goal-status-bar"><div class="status-bar-fill" style="width:100%;background:var(--warn);opacity:.6;"></div></div>
-            <div class="goal-body">
-              <div class="measure-row"><div class="m-dot ok"></div><span class="m-text">Marketing-Maßnahmen 2026</span><span class="m-type fr">Früh</span></div><div class="measure-row"><div class="m-dot warn"></div><span class="m-text">712 → 1.050 Unique Visitors/Monat</span><span class="m-type sp">Spät</span></div><div class="measure-row"><div class="m-dot ok"></div><span class="m-text">Marketingbudget: 190.000 € (−5%)</span><span class="m-type fr">Früh</span></div>
-            </div>
-          </div>
-          <div class="goal-card">
-            <div class="goal-head"><div class="goal-title">Web-Shop weiter ausbauen</div><div class="goal-sub">E-Commerce Excellence</div></div>
-            <div class="goal-status-bar"><div class="status-bar-fill" style="width:100%;background:var(--warn);opacity:.6;"></div></div>
-            <div class="goal-body">
-              <div class="measure-row"><div class="m-dot warn"></div><span class="m-text">Umsatzziel Online: 1 Mio. €</span><span class="m-type sp">Spät</span></div><div class="measure-row"><div class="m-dot ok"></div><span class="m-text">Go Live Web Shop ✓</span><span class="m-type fr">Früh</span></div><div class="measure-row"><div class="m-dot crit"></div><span class="m-text">NPS aktuell: 52,33 → Ziel: 65</span><span class="m-type sp">Spät</span></div>
-            </div>
-          </div>
-          <div class="goal-card">
-            <div class="goal-head"><div class="goal-title">Restposten Lager Abverkauf</div><div class="goal-sub">Lagerbereinigung &amp; Liquidität</div></div>
-            <div class="goal-status-bar"><div class="status-bar-fill" style="width:100%;background:var(--warn);opacity:.6;"></div></div>
-            <div class="goal-body">
-              <div class="measure-row"><div class="m-dot warn"></div><span class="m-text">Lagerbestand systematisch reduzieren</span><span class="m-type sp">Spät</span></div><div class="measure-row"><div class="m-dot warn"></div><span class="m-text">Abverkaufskampagne starten</span><span class="m-type fr">Früh</span></div>
-            </div>
-          </div>
-          <div class="goal-card">
-            <div class="goal-head"><div class="goal-title">Social Media Campaigning</div><div class="goal-sub">Digitale Reichweite aufbauen</div></div>
-            <div class="goal-status-bar"><div class="status-bar-fill" style="width:100%;background:var(--crit);opacity:.6;"></div></div>
-            <div class="goal-body">
-              <div class="measure-row"><div class="m-dot crit"></div><span class="m-text">LinkedIn-Kampagne noch nicht gestartet</span><span class="m-type fr">Früh</span></div><div class="measure-row"><div class="m-dot n"></div><span class="m-text">Online-Kanäle definieren &amp; planen</span><span class="m-type fr">Früh</span></div>
-            </div>
-          </div>
-      </div>
-    </div><div class="persp-block">
-      <div class="persp-head"><span class="persp-badge pro">Prozesse</span><span class="persp-wert">Wert: Ambition &amp; Umsetzungsstärke</span><span class="persp-leitfrage">Setzen wir das um, was wir uns vornehmen?</span></div>
-      <div class="persp-goals" style="grid-template-columns:repeat(4,1fr);">
-        
-          <div class="goal-card">
-            <div class="goal-head"><div class="goal-title">Operational Excellence</div><div class="goal-sub">Prozessoptimierung &amp; CRM</div></div>
-            <div class="goal-status-bar"><div class="status-bar-fill" style="width:100%;background:var(--ok);opacity:.6;"></div></div>
-            <div class="goal-body">
-              <div class="measure-row"><div class="m-dot ok"></div><span class="m-text">CRM Vertrieb — SCORE Gamification</span><span class="m-type fr">Früh</span></div><div class="measure-row"><div class="m-dot ok"></div><span class="m-text">Qualitätsmanagement eingeführt</span><span class="m-type fr">Früh</span></div><div class="measure-row"><div class="m-dot warn"></div><span class="m-text">Reklamationsbearbeitung optimieren</span><span class="m-type sp">Spät</span></div><div class="measure-row"><div class="m-dot ok"></div><span class="m-text">Qualifizierung Mitarbeiter laufend</span><span class="m-type fr">Früh</span></div>
-            </div>
-          </div>
-          <div class="goal-card">
-            <div class="goal-head"><div class="goal-title">Qualitätsmanagement</div><div class="goal-sub">Standards &amp; Servicephilosophie</div></div>
-            <div class="goal-status-bar"><div class="status-bar-fill" style="width:100%;background:var(--warn);opacity:.6;"></div></div>
-            <div class="goal-body">
-              <div class="measure-row"><div class="m-dot ok"></div><span class="m-text">Team Lead Kundenservice besetzt</span><span class="m-type fr">Früh</span></div><div class="measure-row"><div class="m-dot warn"></div><span class="m-text">Service Level Agreements definieren</span><span class="m-type fr">Früh</span></div><div class="measure-row"><div class="m-dot ok"></div><span class="m-text">75 Pkt. Qualifizierungsziel MA</span><span class="m-type sp">Spät</span></div><div class="measure-row"><div class="m-dot ok"></div><span class="m-text">Operational Excellence Index aufbauen</span><span class="m-type fr">Früh</span></div>
-            </div>
-          </div>
-          <div class="goal-card">
-            <div class="goal-head"><div class="goal-title">Standardisiertes Reporting</div><div class="goal-sub">Controlling — Kennzahlen &amp; Cashflow</div></div>
-            <div class="goal-status-bar"><div class="status-bar-fill" style="width:100%;background:var(--ok);opacity:.6;"></div></div>
-            <div class="goal-body">
-              <div class="measure-row"><div class="m-dot ok"></div><span class="m-text">Regelmäßiges Reporting eingeführt</span><span class="m-type fr">Früh</span></div><div class="measure-row"><div class="m-dot ok"></div><span class="m-text">Mitarbeiter qualifiziert</span><span class="m-type fr">Früh</span></div><div class="measure-row"><div class="m-dot ok"></div><span class="m-text">Projektcontrolling aktiv</span><span class="m-type fr">Früh</span></div>
-            </div>
-          </div>
-          <div class="goal-card">
-            <div class="goal-head"><div class="goal-title">CRM Einkauf (SRM)</div><div class="goal-sub">Lieferantenmanagement &amp; Transparenz</div></div>
-            <div class="goal-status-bar"><div class="status-bar-fill" style="width:100%;background:var(--warn);opacity:.6;"></div></div>
-            <div class="goal-body">
-              <div class="measure-row"><div class="m-dot ok"></div><span class="m-text">Bessere Lieferantenkommunikation</span><span class="m-type fr">Früh</span></div><div class="measure-row"><div class="m-dot ok"></div><span class="m-text">Transparenz erhöht</span><span class="m-type fr">Früh</span></div><div class="measure-row"><div class="m-dot warn"></div><span class="m-text">Prozessoptimierung noch offen</span><span class="m-type sp">Spät</span></div>
-            </div>
-          </div>
-      </div>
-    </div><div class="persp-block">
-      <div class="persp-head"><span class="persp-badge ler">Lernen &amp; Entwickeln</span><span class="persp-wert">Wert: Lernen &amp; Entwicklung</span><span class="persp-leitfrage">Werden wir besser, wachsen wir als Mannschaft?</span></div>
-      <div class="persp-goals" style="grid-template-columns:repeat(2,1fr);">
-        
-          <div class="goal-card">
-            <div class="goal-head"><div class="goal-title">Mitarbeiterzufriedenheit</div><div class="goal-sub">Teamecho: Ist 68 → Ziel 75 Pkt.</div></div>
-            <div class="goal-status-bar"><div class="status-bar-fill" style="width:100%;background:var(--warn);opacity:.6;"></div></div>
-            <div class="goal-body">
-              <div class="measure-row"><div class="m-dot warn"></div><span class="m-text">Aktuell: 68 Pkt. | Ziel: 75 Pkt. (+7)</span><span class="m-type sp">Spät</span></div><div class="measure-row"><div class="m-dot ok"></div><span class="m-text">Stimmungsbarometer Teamecho aktiv</span><span class="m-type fr">Früh</span></div><div class="measure-row"><div class="m-dot warn"></div><span class="m-text">Automatische Zeiterfassung einführen</span><span class="m-type fr">Früh</span></div>
-            </div>
-          </div>
-          <div class="goal-card">
-            <div class="goal-head"><div class="goal-title">Qualifizierung Mitarbeiter</div><div class="goal-sub">Regelmäßige Aus- &amp; Weiterbildung</div></div>
-            <div class="goal-status-bar"><div class="status-bar-fill" style="width:100%;background:var(--ok);opacity:.6;"></div></div>
-            <div class="goal-body">
-              <div class="measure-row"><div class="m-dot ok"></div><span class="m-text">Begleitendes Coaching Kundenservice</span><span class="m-type fr">Früh</span></div><div class="measure-row"><div class="m-dot ok"></div><span class="m-text">Skill based Learning — Team Leads</span><span class="m-type fr">Früh</span></div><div class="measure-row"><div class="m-dot ok"></div><span class="m-text">KVP — Kontinuierlicher Verbesserungsprozess</span><span class="m-type fr">Früh</span></div>
-            </div>
-          </div>
-      </div>
-    </div></div>
+  <div id="dashPerspectives"></div>
 </div>
 
 <!-- ===== CORP: VERDICHTUNG ===== -->
@@ -404,516 +243,18 @@ textarea{resize:vertical;}
     <div class="vi-h">Was unten einzeln entsteht, ergibt oben das gemeinsame Bild.</div>
     <div class="vi-sub">Gesamtbild aller acht Teams entlang der vier BSC-Perspektiven — Sichtbarkeit nach oben, ohne Reporting-Druck.</div>
   </div>
-  <div id="verdContent"><div class="verd-block fin">
-      <div class="verd-head"><span class="persp-badge fin">Finanzen</span><span class="persp-wert">Wert: Ertragsorientierung</span><span class="verd-leit">Verdienen wir gut, wirtschaften wir solide?</span><span class="verd-count">1 Beitrag</span></div>
-      
-      <div class="verd-row">
-        <div class="verd-dot" style="background:var(--warn);"></div>
-        <div class="verd-team"><div class="verd-team-name">Othmar</div><div class="verd-team-dept">Technik</div></div>
-        <div class="verd-card"><div class="verd-card-title">Wir bringen unsere Erstlösungsquote spürbar nach oben.</div><div class="verd-card-note">Finanzen — Material- und Wegekosten</div></div>
-      </div>
-    </div><div class="verd-block kun">
-      <div class="verd-head"><span class="persp-badge kun">Kunden</span><span class="persp-wert">Wert: Kundenorientierung</span><span class="verd-leit">Sind unsere Kunden zufrieden, kommen sie wieder?</span><span class="verd-count">1 Beitrag</span></div>
-      
-      <div class="verd-row">
-        <div class="verd-dot" style="background:var(--warn);"></div>
-        <div class="verd-team"><div class="verd-team-name">Othmar</div><div class="verd-team-dept">Technik</div></div>
-        <div class="verd-card"><div class="verd-card-title">Wir bringen unsere Erstlösungsquote spürbar nach oben.</div><div class="verd-card-note">Kunden — Zufriedenheit</div></div>
-      </div>
-    </div><div class="verd-block pro">
-      <div class="verd-head"><span class="persp-badge pro">Prozesse</span><span class="persp-wert">Wert: Ambition &amp; Umsetzungsstärke</span><span class="verd-leit">Setzen wir das um, was wir uns vornehmen?</span><span class="verd-count">1 Beitrag</span></div>
-      
-      <div class="verd-row">
-        <div class="verd-dot" style="background:var(--warn);"></div>
-        <div class="verd-team"><div class="verd-team-name">Othmar</div><div class="verd-team-dept">Technik</div></div>
-        <div class="verd-card"><div class="verd-card-title">Wir bringen unsere Erstlösungsquote spürbar nach oben.</div><div class="verd-card-note">Prozesse — saubere Vorbereitung</div></div>
-      </div>
-    </div><div class="verd-block ler">
-      <div class="verd-head"><span class="persp-badge ler">Lernen &amp; Entwickeln</span><span class="persp-wert">Wert: Lernen &amp; Entwicklung</span><span class="verd-leit">Werden wir besser, wachsen wir als Mannschaft?</span><span class="verd-count">0 Beitrage</span></div>
-      <div class="verd-empty">Noch keine Team-Goalcard ankert auf dieser Perspektive.</div>
-    </div></div>
+  <div id="verdContent"></div>
 </div>
 
 <!-- ===== CORP: EDIT ===== -->
-<div class="main section" id="sec-edit">
+<div class="main section hidden" id="sec-edit">
   <div class="edit-hint">Unternehmens-KPIs und strategische Ziele der Stölner-Scorecard bearbeiten.</div>
-  <div id="editContent"><div class="edit-block">
-    <div class="edit-block-head"><span class="persp-badge fin">Unternehmens-KPIs</span><span style="font-size:11px;color:var(--muted);">Ist / Ziel aktualisieren</span></div>
-    <div class="kpi-edit-grid">
-    <div class="kpi-edit-cell">
-      <div style="font-size:11px;font-weight:700;color:var(--muted);margin-bottom:8px;">Gesamteinnahmen (Plan)</div>
-      <div class="grid3">
-        <div><div class="field-label">Ist</div><input type="number" step="any" value="14327899" onchange="updateKpi(0,'ist',this.value)"></div>
-        <div><div class="field-label">Ziel</div><input type="number" step="any" value="14300000" onchange="updateKpi(0,'ziel',this.value)"></div>
-        <div><div class="field-label">Einheit</div><input type="text" value="€" onchange="updateKpi(0,'unit',this.value)"></div>
-      </div>
-    </div><div class="kpi-edit-cell">
-      <div style="font-size:11px;font-weight:700;color:var(--muted);margin-bottom:8px;">EBIT</div>
-      <div class="grid3">
-        <div><div class="field-label">Ist</div><input type="number" step="any" value="0" onchange="updateKpi(1,'ist',this.value)"></div>
-        <div><div class="field-label">Ziel</div><input type="number" step="any" value="382532" onchange="updateKpi(1,'ziel',this.value)"></div>
-        <div><div class="field-label">Einheit</div><input type="text" value="€" onchange="updateKpi(1,'unit',this.value)"></div>
-      </div>
-    </div><div class="kpi-edit-cell">
-      <div style="font-size:11px;font-weight:700;color:var(--muted);margin-bottom:8px;">Service-Umsatz</div>
-      <div class="grid3">
-        <div><div class="field-label">Ist</div><input type="number" step="any" value="0" onchange="updateKpi(2,'ist',this.value)"></div>
-        <div><div class="field-label">Ziel</div><input type="number" step="any" value="2300000" onchange="updateKpi(2,'ziel',this.value)"></div>
-        <div><div class="field-label">Einheit</div><input type="text" value="€" onchange="updateKpi(2,'unit',this.value)"></div>
-      </div>
-    </div><div class="kpi-edit-cell">
-      <div style="font-size:11px;font-weight:700;color:var(--muted);margin-bottom:8px;">Rohertrag</div>
-      <div class="grid3">
-        <div><div class="field-label">Ist</div><input type="number" step="any" value="0" onchange="updateKpi(3,'ist',this.value)"></div>
-        <div><div class="field-label">Ziel</div><input type="number" step="any" value="5158044" onchange="updateKpi(3,'ziel',this.value)"></div>
-        <div><div class="field-label">Einheit</div><input type="text" value="€" onchange="updateKpi(3,'unit',this.value)"></div>
-      </div>
-    </div><div class="kpi-edit-cell">
-      <div style="font-size:11px;font-weight:700;color:var(--muted);margin-bottom:8px;">HW-Vertrieb</div>
-      <div class="grid3">
-        <div><div class="field-label">Ist</div><input type="number" step="any" value="0" onchange="updateKpi(4,'ist',this.value)"></div>
-        <div><div class="field-label">Ziel</div><input type="number" step="any" value="12000000" onchange="updateKpi(4,'ziel',this.value)"></div>
-        <div><div class="field-label">Einheit</div><input type="text" value="€" onchange="updateKpi(4,'unit',this.value)"></div>
-      </div>
-    </div><div class="kpi-edit-cell">
-      <div style="font-size:11px;font-weight:700;color:var(--muted);margin-bottom:8px;">Materialkosten</div>
-      <div class="grid3">
-        <div><div class="field-label">Ist</div><input type="number" step="any" value="0" onchange="updateKpi(5,'ist',this.value)"></div>
-        <div><div class="field-label">Ziel</div><input type="number" step="any" value="9243480" onchange="updateKpi(5,'ziel',this.value)"></div>
-        <div><div class="field-label">Einheit</div><input type="text" value="€" onchange="updateKpi(5,'unit',this.value)"></div>
-      </div>
-    </div><div class="kpi-edit-cell">
-      <div style="font-size:11px;font-weight:700;color:var(--muted);margin-bottom:8px;">NPS Kundenzufriedenheit</div>
-      <div class="grid3">
-        <div><div class="field-label">Ist</div><input type="number" step="any" value="52.33" onchange="updateKpi(6,'ist',this.value)"></div>
-        <div><div class="field-label">Ziel</div><input type="number" step="any" value="65" onchange="updateKpi(6,'ziel',this.value)"></div>
-        <div><div class="field-label">Einheit</div><input type="text" value="Pkt." onchange="updateKpi(6,'unit',this.value)"></div>
-      </div>
-    </div><div class="kpi-edit-cell">
-      <div style="font-size:11px;font-weight:700;color:var(--muted);margin-bottom:8px;">MA-Zufriedenheit (Teamecho)</div>
-      <div class="grid3">
-        <div><div class="field-label">Ist</div><input type="number" step="any" value="68" onchange="updateKpi(7,'ist',this.value)"></div>
-        <div><div class="field-label">Ziel</div><input type="number" step="any" value="75" onchange="updateKpi(7,'ziel',this.value)"></div>
-        <div><div class="field-label">Einheit</div><input type="text" value="Pkt." onchange="updateKpi(7,'unit',this.value)"></div>
-      </div>
-    </div>
-    </div></div>
-    <div class="edit-block">
-      <div class="edit-block-head"><span class="persp-badge fin">Finanzen</span><span class="persp-wert">Verdienen wir gut, wirtschaften wir solide?</span><button class="btn btn-sm ml-auto" onclick="addGoal(0)">+ Ziel</button></div>
-      
-        <div class="gc-edit">
-          <div class="gc-edit-hdr"><span class="persp-badge fin" style="font-size:9px;">Ziel 1</span>
-            <select class="status-select warn ml-auto" onchange="updateGoal(0,0,'status',this.value)"><option value="ok">✓ Auf Kurs</option><option value="warn" selected="">⚠ Im Plan</option><option value="crit">✗ Kritisch</option><option value="n">○ Offen</option></select>
-            <button class="del-btn" onclick="deleteGoal(0,0)">✕</button></div>
-          <div class="field-label">Titel</div><input type="text" value="EBIT steigern" onchange="updateGoal(0,0,'title',this.value)">
-          <div class="field-label">Beschreibung / Zielwert</div><input type="text" value="Ziel 2026: 382.532 € (+8% vs. 2025)" onchange="updateGoal(0,0,'subtitle',this.value)">
-          <div class="field-label">Maßnahmen</div>
-          <div class="me-row">
-            <select class="status-select warn" onchange="updateGoalMeasure(0,0,0,'status',this.value)"><option value="ok">✓</option><option value="warn" selected="">⚠</option><option value="crit">✗</option><option value="n">○</option></select>
-            <input type="text" value="Gesamteinnahmen Plan: 14,3 Mio. €" onchange="updateGoalMeasure(0,0,0,'text',this.value)">
-            <select onchange="updateGoalMeasure(0,0,0,'type',this.value)"><option value="fr">Früh</option><option value="sp" selected="">Spät</option></select>
-            <span></span><button class="del-btn" onclick="deleteGoalMeasure(0,0,0)">✕</button>
-          </div><div class="me-row">
-            <select class="status-select crit" onchange="updateGoalMeasure(0,0,1,'status',this.value)"><option value="ok">✓</option><option value="warn">⚠</option><option value="crit" selected="">✗</option><option value="n">○</option></select>
-            <input type="text" value="Umsatz steigern (HW + Service)" onchange="updateGoalMeasure(0,0,1,'text',this.value)">
-            <select onchange="updateGoalMeasure(0,0,1,'type',this.value)"><option value="fr" selected="">Früh</option><option value="sp">Spät</option></select>
-            <span></span><button class="del-btn" onclick="deleteGoalMeasure(0,0,1)">✕</button>
-          </div><div class="me-row">
-            <select class="status-select warn" onchange="updateGoalMeasure(0,0,2,'status',this.value)"><option value="ok">✓</option><option value="warn" selected="">⚠</option><option value="crit">✗</option><option value="n">○</option></select>
-            <input type="text" value="Deckungsbeitrag erhöhen" onchange="updateGoalMeasure(0,0,2,'text',this.value)">
-            <select onchange="updateGoalMeasure(0,0,2,'type',this.value)"><option value="fr" selected="">Früh</option><option value="sp">Spät</option></select>
-            <span></span><button class="del-btn" onclick="deleteGoalMeasure(0,0,2)">✕</button>
-          </div><div class="me-row">
-            <select class="status-select ok" onchange="updateGoalMeasure(0,0,3,'status',this.value)"><option value="ok" selected="">✓</option><option value="warn">⚠</option><option value="crit">✗</option><option value="n">○</option></select>
-            <input type="text" value="Materialeinsatz -4% auf 9,24 Mio. €" onchange="updateGoalMeasure(0,0,3,'text',this.value)">
-            <select onchange="updateGoalMeasure(0,0,3,'type',this.value)"><option value="fr" selected="">Früh</option><option value="sp">Spät</option></select>
-            <span></span><button class="del-btn" onclick="deleteGoalMeasure(0,0,3)">✕</button>
-          </div>
-          <button class="add-btn" onclick="addGoalMeasure(0,0)">+ Maßnahme</button>
-        </div>
-        <div class="gc-edit">
-          <div class="gc-edit-hdr"><span class="persp-badge fin" style="font-size:9px;">Ziel 2</span>
-            <select class="status-select warn ml-auto" onchange="updateGoal(0,1,'status',this.value)"><option value="ok">✓ Auf Kurs</option><option value="warn" selected="">⚠ Im Plan</option><option value="crit">✗ Kritisch</option><option value="n">○ Offen</option></select>
-            <button class="del-btn" onclick="deleteGoal(0,1)">✕</button></div>
-          <div class="field-label">Titel</div><input type="text" value="Umsatz steigern" onchange="updateGoal(0,1,'title',this.value)">
-          <div class="field-label">Beschreibung / Zielwert</div><input type="text" value="Betriebsleistung / Gesamteinnahmen" onchange="updateGoal(0,1,'subtitle',this.value)">
-          <div class="field-label">Maßnahmen</div>
-          <div class="me-row">
-            <select class="status-select ok" onchange="updateGoalMeasure(0,1,0,'status',this.value)"><option value="ok" selected="">✓</option><option value="warn">⚠</option><option value="crit">✗</option><option value="n">○</option></select>
-            <input type="text" value="Bekanntheitsgrad steigern" onchange="updateGoalMeasure(0,1,0,'text',this.value)">
-            <select onchange="updateGoalMeasure(0,1,0,'type',this.value)"><option value="fr" selected="">Früh</option><option value="sp">Spät</option></select>
-            <span></span><button class="del-btn" onclick="deleteGoalMeasure(0,1,0)">✕</button>
-          </div><div class="me-row">
-            <select class="status-select warn" onchange="updateGoalMeasure(0,1,1,'status',this.value)"><option value="ok">✓</option><option value="warn" selected="">⚠</option><option value="crit">✗</option><option value="n">○</option></select>
-            <input type="text" value="Web-Shop Ausbau (Ziel: 1 Mio. €)" onchange="updateGoalMeasure(0,1,1,'text',this.value)">
-            <select onchange="updateGoalMeasure(0,1,1,'type',this.value)"><option value="fr" selected="">Früh</option><option value="sp">Spät</option></select>
-            <span></span><button class="del-btn" onclick="deleteGoalMeasure(0,1,1)">✕</button>
-          </div><div class="me-row">
-            <select class="status-select warn" onchange="updateGoalMeasure(0,1,2,'status',this.value)"><option value="ok">✓</option><option value="warn" selected="">⚠</option><option value="crit">✗</option><option value="n">○</option></select>
-            <input type="text" value="Service-Umsatz +4,5% auf 2,3 Mio. €" onchange="updateGoalMeasure(0,1,2,'text',this.value)">
-            <select onchange="updateGoalMeasure(0,1,2,'type',this.value)"><option value="fr">Früh</option><option value="sp" selected="">Spät</option></select>
-            <span></span><button class="del-btn" onclick="deleteGoalMeasure(0,1,2)">✕</button>
-          </div>
-          <button class="add-btn" onclick="addGoalMeasure(0,1)">+ Maßnahme</button>
-        </div>
-        <div class="gc-edit">
-          <div class="gc-edit-hdr"><span class="persp-badge fin" style="font-size:9px;">Ziel 3</span>
-            <select class="status-select warn ml-auto" onchange="updateGoal(0,2,'status',this.value)"><option value="ok">✓ Auf Kurs</option><option value="warn" selected="">⚠ Im Plan</option><option value="crit">✗ Kritisch</option><option value="n">○ Offen</option></select>
-            <button class="del-btn" onclick="deleteGoal(0,2)">✕</button></div>
-          <div class="field-label">Titel</div><input type="text" value="Deckungsbeitrag erhöhen" onchange="updateGoal(0,2,'title',this.value)">
-          <div class="field-label">Beschreibung / Zielwert</div><input type="text" value="Rohertrag Ziel: 5,16 Mio. € (+0,3%)" onchange="updateGoal(0,2,'subtitle',this.value)">
-          <div class="field-label">Maßnahmen</div>
-          <div class="me-row">
-            <select class="status-select warn" onchange="updateGoalMeasure(0,2,0,'status',this.value)"><option value="ok">✓</option><option value="warn" selected="">⚠</option><option value="crit">✗</option><option value="n">○</option></select>
-            <input type="text" value="Rohertrag Plan 2026: 5.158.044 €" onchange="updateGoalMeasure(0,2,0,'text',this.value)">
-            <select onchange="updateGoalMeasure(0,2,0,'type',this.value)"><option value="fr">Früh</option><option value="sp" selected="">Spät</option></select>
-            <span></span><button class="del-btn" onclick="deleteGoalMeasure(0,2,0)">✕</button>
-          </div><div class="me-row">
-            <select class="status-select warn" onchange="updateGoalMeasure(0,2,1,'status',this.value)"><option value="ok">✓</option><option value="warn" selected="">⚠</option><option value="crit">✗</option><option value="n">○</option></select>
-            <input type="text" value="HW-Vertrieb: 12 Mio. € (−4% vs. 2025)" onchange="updateGoalMeasure(0,2,1,'text',this.value)">
-            <select onchange="updateGoalMeasure(0,2,1,'type',this.value)"><option value="fr" selected="">Früh</option><option value="sp">Spät</option></select>
-            <span></span><button class="del-btn" onclick="deleteGoalMeasure(0,2,1)">✕</button>
-          </div><div class="me-row">
-            <select class="status-select ok" onchange="updateGoalMeasure(0,2,2,'status',this.value)"><option value="ok" selected="">✓</option><option value="warn">⚠</option><option value="crit">✗</option><option value="n">○</option></select>
-            <input type="text" value="Marketingkosten: −5% auf 190.000 €" onchange="updateGoalMeasure(0,2,2,'text',this.value)">
-            <select onchange="updateGoalMeasure(0,2,2,'type',this.value)"><option value="fr" selected="">Früh</option><option value="sp">Spät</option></select>
-            <span></span><button class="del-btn" onclick="deleteGoalMeasure(0,2,2)">✕</button>
-          </div>
-          <button class="add-btn" onclick="addGoalMeasure(0,2)">+ Maßnahme</button>
-        </div>
-        <div class="gc-edit">
-          <div class="gc-edit-hdr"><span class="persp-badge fin" style="font-size:9px;">Ziel 4</span>
-            <select class="status-select ok ml-auto" onchange="updateGoal(0,3,'status',this.value)"><option value="ok" selected="">✓ Auf Kurs</option><option value="warn">⚠ Im Plan</option><option value="crit">✗ Kritisch</option><option value="n">○ Offen</option></select>
-            <button class="del-btn" onclick="deleteGoal(0,3)">✕</button></div>
-          <div class="field-label">Titel</div><input type="text" value="Cashflow optimieren" onchange="updateGoal(0,3,'title',this.value)">
-          <div class="field-label">Beschreibung / Zielwert</div><input type="text" value="Kosten senken &amp; Reporting" onchange="updateGoal(0,3,'subtitle',this.value)">
-          <div class="field-label">Maßnahmen</div>
-          <div class="me-row">
-            <select class="status-select ok" onchange="updateGoalMeasure(0,3,0,'status',this.value)"><option value="ok" selected="">✓</option><option value="warn">⚠</option><option value="crit">✗</option><option value="n">○</option></select>
-            <input type="text" value="Verwaltungskosten: −3,4% auf 1,36 Mio. €" onchange="updateGoalMeasure(0,3,0,'text',this.value)">
-            <select onchange="updateGoalMeasure(0,3,0,'type',this.value)"><option value="fr" selected="">Früh</option><option value="sp">Spät</option></select>
-            <span></span><button class="del-btn" onclick="deleteGoalMeasure(0,3,0)">✕</button>
-          </div><div class="me-row">
-            <select class="status-select ok" onchange="updateGoalMeasure(0,3,1,'status',this.value)"><option value="ok" selected="">✓</option><option value="warn">⚠</option><option value="crit">✗</option><option value="n">○</option></select>
-            <input type="text" value="Materialeinsatz: −385.145 € Einsparung" onchange="updateGoalMeasure(0,3,1,'text',this.value)">
-            <select onchange="updateGoalMeasure(0,3,1,'type',this.value)"><option value="fr" selected="">Früh</option><option value="sp">Spät</option></select>
-            <span></span><button class="del-btn" onclick="deleteGoalMeasure(0,3,1)">✕</button>
-          </div><div class="me-row">
-            <select class="status-select ok" onchange="updateGoalMeasure(0,3,2,'status',this.value)"><option value="ok" selected="">✓</option><option value="warn">⚠</option><option value="crit">✗</option><option value="n">○</option></select>
-            <input type="text" value="Standardisiertes Reporting aktiv" onchange="updateGoalMeasure(0,3,2,'text',this.value)">
-            <select onchange="updateGoalMeasure(0,3,2,'type',this.value)"><option value="fr" selected="">Früh</option><option value="sp">Spät</option></select>
-            <span></span><button class="del-btn" onclick="deleteGoalMeasure(0,3,2)">✕</button>
-          </div>
-          <button class="add-btn" onclick="addGoalMeasure(0,3)">+ Maßnahme</button>
-        </div>
-    </div>
-    <div class="edit-block">
-      <div class="edit-block-head"><span class="persp-badge kun">Kunden</span><span class="persp-wert">Sind unsere Kunden zufrieden, kommen sie wieder?</span><button class="btn btn-sm ml-auto" onclick="addGoal(1)">+ Ziel</button></div>
-      
-        <div class="gc-edit">
-          <div class="gc-edit-hdr"><span class="persp-badge kun" style="font-size:9px;">Ziel 1</span>
-            <select class="status-select warn ml-auto" onchange="updateGoal(1,0,'status',this.value)"><option value="ok">✓ Auf Kurs</option><option value="warn" selected="">⚠ Im Plan</option><option value="crit">✗ Kritisch</option><option value="n">○ Offen</option></select>
-            <button class="del-btn" onclick="deleteGoal(1,0)">✕</button></div>
-          <div class="field-label">Titel</div><input type="text" value="Bekanntheitsgrad steigern" onchange="updateGoal(1,0,'title',this.value)">
-          <div class="field-label">Beschreibung / Zielwert</div><input type="text" value="Marketing &amp; Sichtbarkeit" onchange="updateGoal(1,0,'subtitle',this.value)">
-          <div class="field-label">Maßnahmen</div>
-          <div class="me-row">
-            <select class="status-select ok" onchange="updateGoalMeasure(1,0,0,'status',this.value)"><option value="ok" selected="">✓</option><option value="warn">⚠</option><option value="crit">✗</option><option value="n">○</option></select>
-            <input type="text" value="Marketing-Maßnahmen 2026" onchange="updateGoalMeasure(1,0,0,'text',this.value)">
-            <select onchange="updateGoalMeasure(1,0,0,'type',this.value)"><option value="fr" selected="">Früh</option><option value="sp">Spät</option></select>
-            <span></span><button class="del-btn" onclick="deleteGoalMeasure(1,0,0)">✕</button>
-          </div><div class="me-row">
-            <select class="status-select warn" onchange="updateGoalMeasure(1,0,1,'status',this.value)"><option value="ok">✓</option><option value="warn" selected="">⚠</option><option value="crit">✗</option><option value="n">○</option></select>
-            <input type="text" value="712 → 1.050 Unique Visitors/Monat" onchange="updateGoalMeasure(1,0,1,'text',this.value)">
-            <select onchange="updateGoalMeasure(1,0,1,'type',this.value)"><option value="fr">Früh</option><option value="sp" selected="">Spät</option></select>
-            <span></span><button class="del-btn" onclick="deleteGoalMeasure(1,0,1)">✕</button>
-          </div><div class="me-row">
-            <select class="status-select ok" onchange="updateGoalMeasure(1,0,2,'status',this.value)"><option value="ok" selected="">✓</option><option value="warn">⚠</option><option value="crit">✗</option><option value="n">○</option></select>
-            <input type="text" value="Marketingbudget: 190.000 € (−5%)" onchange="updateGoalMeasure(1,0,2,'text',this.value)">
-            <select onchange="updateGoalMeasure(1,0,2,'type',this.value)"><option value="fr" selected="">Früh</option><option value="sp">Spät</option></select>
-            <span></span><button class="del-btn" onclick="deleteGoalMeasure(1,0,2)">✕</button>
-          </div>
-          <button class="add-btn" onclick="addGoalMeasure(1,0)">+ Maßnahme</button>
-        </div>
-        <div class="gc-edit">
-          <div class="gc-edit-hdr"><span class="persp-badge kun" style="font-size:9px;">Ziel 2</span>
-            <select class="status-select warn ml-auto" onchange="updateGoal(1,1,'status',this.value)"><option value="ok">✓ Auf Kurs</option><option value="warn" selected="">⚠ Im Plan</option><option value="crit">✗ Kritisch</option><option value="n">○ Offen</option></select>
-            <button class="del-btn" onclick="deleteGoal(1,1)">✕</button></div>
-          <div class="field-label">Titel</div><input type="text" value="Web-Shop weiter ausbauen" onchange="updateGoal(1,1,'title',this.value)">
-          <div class="field-label">Beschreibung / Zielwert</div><input type="text" value="E-Commerce Excellence" onchange="updateGoal(1,1,'subtitle',this.value)">
-          <div class="field-label">Maßnahmen</div>
-          <div class="me-row">
-            <select class="status-select warn" onchange="updateGoalMeasure(1,1,0,'status',this.value)"><option value="ok">✓</option><option value="warn" selected="">⚠</option><option value="crit">✗</option><option value="n">○</option></select>
-            <input type="text" value="Umsatzziel Online: 1 Mio. €" onchange="updateGoalMeasure(1,1,0,'text',this.value)">
-            <select onchange="updateGoalMeasure(1,1,0,'type',this.value)"><option value="fr">Früh</option><option value="sp" selected="">Spät</option></select>
-            <span></span><button class="del-btn" onclick="deleteGoalMeasure(1,1,0)">✕</button>
-          </div><div class="me-row">
-            <select class="status-select ok" onchange="updateGoalMeasure(1,1,1,'status',this.value)"><option value="ok" selected="">✓</option><option value="warn">⚠</option><option value="crit">✗</option><option value="n">○</option></select>
-            <input type="text" value="Go Live Web Shop ✓" onchange="updateGoalMeasure(1,1,1,'text',this.value)">
-            <select onchange="updateGoalMeasure(1,1,1,'type',this.value)"><option value="fr" selected="">Früh</option><option value="sp">Spät</option></select>
-            <span></span><button class="del-btn" onclick="deleteGoalMeasure(1,1,1)">✕</button>
-          </div><div class="me-row">
-            <select class="status-select crit" onchange="updateGoalMeasure(1,1,2,'status',this.value)"><option value="ok">✓</option><option value="warn">⚠</option><option value="crit" selected="">✗</option><option value="n">○</option></select>
-            <input type="text" value="NPS aktuell: 52,33 → Ziel: 65" onchange="updateGoalMeasure(1,1,2,'text',this.value)">
-            <select onchange="updateGoalMeasure(1,1,2,'type',this.value)"><option value="fr">Früh</option><option value="sp" selected="">Spät</option></select>
-            <span></span><button class="del-btn" onclick="deleteGoalMeasure(1,1,2)">✕</button>
-          </div>
-          <button class="add-btn" onclick="addGoalMeasure(1,1)">+ Maßnahme</button>
-        </div>
-        <div class="gc-edit">
-          <div class="gc-edit-hdr"><span class="persp-badge kun" style="font-size:9px;">Ziel 3</span>
-            <select class="status-select warn ml-auto" onchange="updateGoal(1,2,'status',this.value)"><option value="ok">✓ Auf Kurs</option><option value="warn" selected="">⚠ Im Plan</option><option value="crit">✗ Kritisch</option><option value="n">○ Offen</option></select>
-            <button class="del-btn" onclick="deleteGoal(1,2)">✕</button></div>
-          <div class="field-label">Titel</div><input type="text" value="Restposten Lager Abverkauf" onchange="updateGoal(1,2,'title',this.value)">
-          <div class="field-label">Beschreibung / Zielwert</div><input type="text" value="Lagerbereinigung &amp; Liquidität" onchange="updateGoal(1,2,'subtitle',this.value)">
-          <div class="field-label">Maßnahmen</div>
-          <div class="me-row">
-            <select class="status-select warn" onchange="updateGoalMeasure(1,2,0,'status',this.value)"><option value="ok">✓</option><option value="warn" selected="">⚠</option><option value="crit">✗</option><option value="n">○</option></select>
-            <input type="text" value="Lagerbestand systematisch reduzieren" onchange="updateGoalMeasure(1,2,0,'text',this.value)">
-            <select onchange="updateGoalMeasure(1,2,0,'type',this.value)"><option value="fr">Früh</option><option value="sp" selected="">Spät</option></select>
-            <span></span><button class="del-btn" onclick="deleteGoalMeasure(1,2,0)">✕</button>
-          </div><div class="me-row">
-            <select class="status-select warn" onchange="updateGoalMeasure(1,2,1,'status',this.value)"><option value="ok">✓</option><option value="warn" selected="">⚠</option><option value="crit">✗</option><option value="n">○</option></select>
-            <input type="text" value="Abverkaufskampagne starten" onchange="updateGoalMeasure(1,2,1,'text',this.value)">
-            <select onchange="updateGoalMeasure(1,2,1,'type',this.value)"><option value="fr" selected="">Früh</option><option value="sp">Spät</option></select>
-            <span></span><button class="del-btn" onclick="deleteGoalMeasure(1,2,1)">✕</button>
-          </div>
-          <button class="add-btn" onclick="addGoalMeasure(1,2)">+ Maßnahme</button>
-        </div>
-        <div class="gc-edit">
-          <div class="gc-edit-hdr"><span class="persp-badge kun" style="font-size:9px;">Ziel 4</span>
-            <select class="status-select crit ml-auto" onchange="updateGoal(1,3,'status',this.value)"><option value="ok">✓ Auf Kurs</option><option value="warn">⚠ Im Plan</option><option value="crit" selected="">✗ Kritisch</option><option value="n">○ Offen</option></select>
-            <button class="del-btn" onclick="deleteGoal(1,3)">✕</button></div>
-          <div class="field-label">Titel</div><input type="text" value="Social Media Campaigning" onchange="updateGoal(1,3,'title',this.value)">
-          <div class="field-label">Beschreibung / Zielwert</div><input type="text" value="Digitale Reichweite aufbauen" onchange="updateGoal(1,3,'subtitle',this.value)">
-          <div class="field-label">Maßnahmen</div>
-          <div class="me-row">
-            <select class="status-select crit" onchange="updateGoalMeasure(1,3,0,'status',this.value)"><option value="ok">✓</option><option value="warn">⚠</option><option value="crit" selected="">✗</option><option value="n">○</option></select>
-            <input type="text" value="LinkedIn-Kampagne noch nicht gestartet" onchange="updateGoalMeasure(1,3,0,'text',this.value)">
-            <select onchange="updateGoalMeasure(1,3,0,'type',this.value)"><option value="fr" selected="">Früh</option><option value="sp">Spät</option></select>
-            <span></span><button class="del-btn" onclick="deleteGoalMeasure(1,3,0)">✕</button>
-          </div><div class="me-row">
-            <select class="status-select n" onchange="updateGoalMeasure(1,3,1,'status',this.value)"><option value="ok">✓</option><option value="warn">⚠</option><option value="crit">✗</option><option value="n" selected="">○</option></select>
-            <input type="text" value="Online-Kanäle definieren &amp; planen" onchange="updateGoalMeasure(1,3,1,'text',this.value)">
-            <select onchange="updateGoalMeasure(1,3,1,'type',this.value)"><option value="fr" selected="">Früh</option><option value="sp">Spät</option></select>
-            <span></span><button class="del-btn" onclick="deleteGoalMeasure(1,3,1)">✕</button>
-          </div>
-          <button class="add-btn" onclick="addGoalMeasure(1,3)">+ Maßnahme</button>
-        </div>
-    </div>
-    <div class="edit-block">
-      <div class="edit-block-head"><span class="persp-badge pro">Prozesse</span><span class="persp-wert">Setzen wir das um, was wir uns vornehmen?</span><button class="btn btn-sm ml-auto" onclick="addGoal(2)">+ Ziel</button></div>
-      
-        <div class="gc-edit">
-          <div class="gc-edit-hdr"><span class="persp-badge pro" style="font-size:9px;">Ziel 1</span>
-            <select class="status-select ok ml-auto" onchange="updateGoal(2,0,'status',this.value)"><option value="ok" selected="">✓ Auf Kurs</option><option value="warn">⚠ Im Plan</option><option value="crit">✗ Kritisch</option><option value="n">○ Offen</option></select>
-            <button class="del-btn" onclick="deleteGoal(2,0)">✕</button></div>
-          <div class="field-label">Titel</div><input type="text" value="Operational Excellence" onchange="updateGoal(2,0,'title',this.value)">
-          <div class="field-label">Beschreibung / Zielwert</div><input type="text" value="Prozessoptimierung &amp; CRM" onchange="updateGoal(2,0,'subtitle',this.value)">
-          <div class="field-label">Maßnahmen</div>
-          <div class="me-row">
-            <select class="status-select ok" onchange="updateGoalMeasure(2,0,0,'status',this.value)"><option value="ok" selected="">✓</option><option value="warn">⚠</option><option value="crit">✗</option><option value="n">○</option></select>
-            <input type="text" value="CRM Vertrieb — SCORE Gamification" onchange="updateGoalMeasure(2,0,0,'text',this.value)">
-            <select onchange="updateGoalMeasure(2,0,0,'type',this.value)"><option value="fr" selected="">Früh</option><option value="sp">Spät</option></select>
-            <span></span><button class="del-btn" onclick="deleteGoalMeasure(2,0,0)">✕</button>
-          </div><div class="me-row">
-            <select class="status-select ok" onchange="updateGoalMeasure(2,0,1,'status',this.value)"><option value="ok" selected="">✓</option><option value="warn">⚠</option><option value="crit">✗</option><option value="n">○</option></select>
-            <input type="text" value="Qualitätsmanagement eingeführt" onchange="updateGoalMeasure(2,0,1,'text',this.value)">
-            <select onchange="updateGoalMeasure(2,0,1,'type',this.value)"><option value="fr" selected="">Früh</option><option value="sp">Spät</option></select>
-            <span></span><button class="del-btn" onclick="deleteGoalMeasure(2,0,1)">✕</button>
-          </div><div class="me-row">
-            <select class="status-select warn" onchange="updateGoalMeasure(2,0,2,'status',this.value)"><option value="ok">✓</option><option value="warn" selected="">⚠</option><option value="crit">✗</option><option value="n">○</option></select>
-            <input type="text" value="Reklamationsbearbeitung optimieren" onchange="updateGoalMeasure(2,0,2,'text',this.value)">
-            <select onchange="updateGoalMeasure(2,0,2,'type',this.value)"><option value="fr">Früh</option><option value="sp" selected="">Spät</option></select>
-            <span></span><button class="del-btn" onclick="deleteGoalMeasure(2,0,2)">✕</button>
-          </div><div class="me-row">
-            <select class="status-select ok" onchange="updateGoalMeasure(2,0,3,'status',this.value)"><option value="ok" selected="">✓</option><option value="warn">⚠</option><option value="crit">✗</option><option value="n">○</option></select>
-            <input type="text" value="Qualifizierung Mitarbeiter laufend" onchange="updateGoalMeasure(2,0,3,'text',this.value)">
-            <select onchange="updateGoalMeasure(2,0,3,'type',this.value)"><option value="fr" selected="">Früh</option><option value="sp">Spät</option></select>
-            <span></span><button class="del-btn" onclick="deleteGoalMeasure(2,0,3)">✕</button>
-          </div>
-          <button class="add-btn" onclick="addGoalMeasure(2,0)">+ Maßnahme</button>
-        </div>
-        <div class="gc-edit">
-          <div class="gc-edit-hdr"><span class="persp-badge pro" style="font-size:9px;">Ziel 2</span>
-            <select class="status-select warn ml-auto" onchange="updateGoal(2,1,'status',this.value)"><option value="ok">✓ Auf Kurs</option><option value="warn" selected="">⚠ Im Plan</option><option value="crit">✗ Kritisch</option><option value="n">○ Offen</option></select>
-            <button class="del-btn" onclick="deleteGoal(2,1)">✕</button></div>
-          <div class="field-label">Titel</div><input type="text" value="Qualitätsmanagement" onchange="updateGoal(2,1,'title',this.value)">
-          <div class="field-label">Beschreibung / Zielwert</div><input type="text" value="Standards &amp; Servicephilosophie" onchange="updateGoal(2,1,'subtitle',this.value)">
-          <div class="field-label">Maßnahmen</div>
-          <div class="me-row">
-            <select class="status-select ok" onchange="updateGoalMeasure(2,1,0,'status',this.value)"><option value="ok" selected="">✓</option><option value="warn">⚠</option><option value="crit">✗</option><option value="n">○</option></select>
-            <input type="text" value="Team Lead Kundenservice besetzt" onchange="updateGoalMeasure(2,1,0,'text',this.value)">
-            <select onchange="updateGoalMeasure(2,1,0,'type',this.value)"><option value="fr" selected="">Früh</option><option value="sp">Spät</option></select>
-            <span></span><button class="del-btn" onclick="deleteGoalMeasure(2,1,0)">✕</button>
-          </div><div class="me-row">
-            <select class="status-select warn" onchange="updateGoalMeasure(2,1,1,'status',this.value)"><option value="ok">✓</option><option value="warn" selected="">⚠</option><option value="crit">✗</option><option value="n">○</option></select>
-            <input type="text" value="Service Level Agreements definieren" onchange="updateGoalMeasure(2,1,1,'text',this.value)">
-            <select onchange="updateGoalMeasure(2,1,1,'type',this.value)"><option value="fr" selected="">Früh</option><option value="sp">Spät</option></select>
-            <span></span><button class="del-btn" onclick="deleteGoalMeasure(2,1,1)">✕</button>
-          </div><div class="me-row">
-            <select class="status-select ok" onchange="updateGoalMeasure(2,1,2,'status',this.value)"><option value="ok" selected="">✓</option><option value="warn">⚠</option><option value="crit">✗</option><option value="n">○</option></select>
-            <input type="text" value="75 Pkt. Qualifizierungsziel MA" onchange="updateGoalMeasure(2,1,2,'text',this.value)">
-            <select onchange="updateGoalMeasure(2,1,2,'type',this.value)"><option value="fr">Früh</option><option value="sp" selected="">Spät</option></select>
-            <span></span><button class="del-btn" onclick="deleteGoalMeasure(2,1,2)">✕</button>
-          </div><div class="me-row">
-            <select class="status-select ok" onchange="updateGoalMeasure(2,1,3,'status',this.value)"><option value="ok" selected="">✓</option><option value="warn">⚠</option><option value="crit">✗</option><option value="n">○</option></select>
-            <input type="text" value="Operational Excellence Index aufbauen" onchange="updateGoalMeasure(2,1,3,'text',this.value)">
-            <select onchange="updateGoalMeasure(2,1,3,'type',this.value)"><option value="fr" selected="">Früh</option><option value="sp">Spät</option></select>
-            <span></span><button class="del-btn" onclick="deleteGoalMeasure(2,1,3)">✕</button>
-          </div>
-          <button class="add-btn" onclick="addGoalMeasure(2,1)">+ Maßnahme</button>
-        </div>
-        <div class="gc-edit">
-          <div class="gc-edit-hdr"><span class="persp-badge pro" style="font-size:9px;">Ziel 3</span>
-            <select class="status-select ok ml-auto" onchange="updateGoal(2,2,'status',this.value)"><option value="ok" selected="">✓ Auf Kurs</option><option value="warn">⚠ Im Plan</option><option value="crit">✗ Kritisch</option><option value="n">○ Offen</option></select>
-            <button class="del-btn" onclick="deleteGoal(2,2)">✕</button></div>
-          <div class="field-label">Titel</div><input type="text" value="Standardisiertes Reporting" onchange="updateGoal(2,2,'title',this.value)">
-          <div class="field-label">Beschreibung / Zielwert</div><input type="text" value="Controlling — Kennzahlen &amp; Cashflow" onchange="updateGoal(2,2,'subtitle',this.value)">
-          <div class="field-label">Maßnahmen</div>
-          <div class="me-row">
-            <select class="status-select ok" onchange="updateGoalMeasure(2,2,0,'status',this.value)"><option value="ok" selected="">✓</option><option value="warn">⚠</option><option value="crit">✗</option><option value="n">○</option></select>
-            <input type="text" value="Regelmäßiges Reporting eingeführt" onchange="updateGoalMeasure(2,2,0,'text',this.value)">
-            <select onchange="updateGoalMeasure(2,2,0,'type',this.value)"><option value="fr" selected="">Früh</option><option value="sp">Spät</option></select>
-            <span></span><button class="del-btn" onclick="deleteGoalMeasure(2,2,0)">✕</button>
-          </div><div class="me-row">
-            <select class="status-select ok" onchange="updateGoalMeasure(2,2,1,'status',this.value)"><option value="ok" selected="">✓</option><option value="warn">⚠</option><option value="crit">✗</option><option value="n">○</option></select>
-            <input type="text" value="Mitarbeiter qualifiziert" onchange="updateGoalMeasure(2,2,1,'text',this.value)">
-            <select onchange="updateGoalMeasure(2,2,1,'type',this.value)"><option value="fr" selected="">Früh</option><option value="sp">Spät</option></select>
-            <span></span><button class="del-btn" onclick="deleteGoalMeasure(2,2,1)">✕</button>
-          </div><div class="me-row">
-            <select class="status-select ok" onchange="updateGoalMeasure(2,2,2,'status',this.value)"><option value="ok" selected="">✓</option><option value="warn">⚠</option><option value="crit">✗</option><option value="n">○</option></select>
-            <input type="text" value="Projektcontrolling aktiv" onchange="updateGoalMeasure(2,2,2,'text',this.value)">
-            <select onchange="updateGoalMeasure(2,2,2,'type',this.value)"><option value="fr" selected="">Früh</option><option value="sp">Spät</option></select>
-            <span></span><button class="del-btn" onclick="deleteGoalMeasure(2,2,2)">✕</button>
-          </div>
-          <button class="add-btn" onclick="addGoalMeasure(2,2)">+ Maßnahme</button>
-        </div>
-        <div class="gc-edit">
-          <div class="gc-edit-hdr"><span class="persp-badge pro" style="font-size:9px;">Ziel 4</span>
-            <select class="status-select warn ml-auto" onchange="updateGoal(2,3,'status',this.value)"><option value="ok">✓ Auf Kurs</option><option value="warn" selected="">⚠ Im Plan</option><option value="crit">✗ Kritisch</option><option value="n">○ Offen</option></select>
-            <button class="del-btn" onclick="deleteGoal(2,3)">✕</button></div>
-          <div class="field-label">Titel</div><input type="text" value="CRM Einkauf (SRM)" onchange="updateGoal(2,3,'title',this.value)">
-          <div class="field-label">Beschreibung / Zielwert</div><input type="text" value="Lieferantenmanagement &amp; Transparenz" onchange="updateGoal(2,3,'subtitle',this.value)">
-          <div class="field-label">Maßnahmen</div>
-          <div class="me-row">
-            <select class="status-select ok" onchange="updateGoalMeasure(2,3,0,'status',this.value)"><option value="ok" selected="">✓</option><option value="warn">⚠</option><option value="crit">✗</option><option value="n">○</option></select>
-            <input type="text" value="Bessere Lieferantenkommunikation" onchange="updateGoalMeasure(2,3,0,'text',this.value)">
-            <select onchange="updateGoalMeasure(2,3,0,'type',this.value)"><option value="fr" selected="">Früh</option><option value="sp">Spät</option></select>
-            <span></span><button class="del-btn" onclick="deleteGoalMeasure(2,3,0)">✕</button>
-          </div><div class="me-row">
-            <select class="status-select ok" onchange="updateGoalMeasure(2,3,1,'status',this.value)"><option value="ok" selected="">✓</option><option value="warn">⚠</option><option value="crit">✗</option><option value="n">○</option></select>
-            <input type="text" value="Transparenz erhöht" onchange="updateGoalMeasure(2,3,1,'text',this.value)">
-            <select onchange="updateGoalMeasure(2,3,1,'type',this.value)"><option value="fr" selected="">Früh</option><option value="sp">Spät</option></select>
-            <span></span><button class="del-btn" onclick="deleteGoalMeasure(2,3,1)">✕</button>
-          </div><div class="me-row">
-            <select class="status-select warn" onchange="updateGoalMeasure(2,3,2,'status',this.value)"><option value="ok">✓</option><option value="warn" selected="">⚠</option><option value="crit">✗</option><option value="n">○</option></select>
-            <input type="text" value="Prozessoptimierung noch offen" onchange="updateGoalMeasure(2,3,2,'text',this.value)">
-            <select onchange="updateGoalMeasure(2,3,2,'type',this.value)"><option value="fr">Früh</option><option value="sp" selected="">Spät</option></select>
-            <span></span><button class="del-btn" onclick="deleteGoalMeasure(2,3,2)">✕</button>
-          </div>
-          <button class="add-btn" onclick="addGoalMeasure(2,3)">+ Maßnahme</button>
-        </div>
-    </div>
-    <div class="edit-block">
-      <div class="edit-block-head"><span class="persp-badge ler">Lernen &amp; Entwickeln</span><span class="persp-wert">Werden wir besser, wachsen wir als Mannschaft?</span><button class="btn btn-sm ml-auto" onclick="addGoal(3)">+ Ziel</button></div>
-      
-        <div class="gc-edit">
-          <div class="gc-edit-hdr"><span class="persp-badge ler" style="font-size:9px;">Ziel 1</span>
-            <select class="status-select warn ml-auto" onchange="updateGoal(3,0,'status',this.value)"><option value="ok">✓ Auf Kurs</option><option value="warn" selected="">⚠ Im Plan</option><option value="crit">✗ Kritisch</option><option value="n">○ Offen</option></select>
-            <button class="del-btn" onclick="deleteGoal(3,0)">✕</button></div>
-          <div class="field-label">Titel</div><input type="text" value="Mitarbeiterzufriedenheit" onchange="updateGoal(3,0,'title',this.value)">
-          <div class="field-label">Beschreibung / Zielwert</div><input type="text" value="Teamecho: Ist 68 → Ziel 75 Pkt." onchange="updateGoal(3,0,'subtitle',this.value)">
-          <div class="field-label">Maßnahmen</div>
-          <div class="me-row">
-            <select class="status-select warn" onchange="updateGoalMeasure(3,0,0,'status',this.value)"><option value="ok">✓</option><option value="warn" selected="">⚠</option><option value="crit">✗</option><option value="n">○</option></select>
-            <input type="text" value="Aktuell: 68 Pkt. | Ziel: 75 Pkt. (+7)" onchange="updateGoalMeasure(3,0,0,'text',this.value)">
-            <select onchange="updateGoalMeasure(3,0,0,'type',this.value)"><option value="fr">Früh</option><option value="sp" selected="">Spät</option></select>
-            <span></span><button class="del-btn" onclick="deleteGoalMeasure(3,0,0)">✕</button>
-          </div><div class="me-row">
-            <select class="status-select ok" onchange="updateGoalMeasure(3,0,1,'status',this.value)"><option value="ok" selected="">✓</option><option value="warn">⚠</option><option value="crit">✗</option><option value="n">○</option></select>
-            <input type="text" value="Stimmungsbarometer Teamecho aktiv" onchange="updateGoalMeasure(3,0,1,'text',this.value)">
-            <select onchange="updateGoalMeasure(3,0,1,'type',this.value)"><option value="fr" selected="">Früh</option><option value="sp">Spät</option></select>
-            <span></span><button class="del-btn" onclick="deleteGoalMeasure(3,0,1)">✕</button>
-          </div><div class="me-row">
-            <select class="status-select warn" onchange="updateGoalMeasure(3,0,2,'status',this.value)"><option value="ok">✓</option><option value="warn" selected="">⚠</option><option value="crit">✗</option><option value="n">○</option></select>
-            <input type="text" value="Automatische Zeiterfassung einführen" onchange="updateGoalMeasure(3,0,2,'text',this.value)">
-            <select onchange="updateGoalMeasure(3,0,2,'type',this.value)"><option value="fr" selected="">Früh</option><option value="sp">Spät</option></select>
-            <span></span><button class="del-btn" onclick="deleteGoalMeasure(3,0,2)">✕</button>
-          </div>
-          <button class="add-btn" onclick="addGoalMeasure(3,0)">+ Maßnahme</button>
-        </div>
-        <div class="gc-edit">
-          <div class="gc-edit-hdr"><span class="persp-badge ler" style="font-size:9px;">Ziel 2</span>
-            <select class="status-select ok ml-auto" onchange="updateGoal(3,1,'status',this.value)"><option value="ok" selected="">✓ Auf Kurs</option><option value="warn">⚠ Im Plan</option><option value="crit">✗ Kritisch</option><option value="n">○ Offen</option></select>
-            <button class="del-btn" onclick="deleteGoal(3,1)">✕</button></div>
-          <div class="field-label">Titel</div><input type="text" value="Qualifizierung Mitarbeiter" onchange="updateGoal(3,1,'title',this.value)">
-          <div class="field-label">Beschreibung / Zielwert</div><input type="text" value="Regelmäßige Aus- &amp; Weiterbildung" onchange="updateGoal(3,1,'subtitle',this.value)">
-          <div class="field-label">Maßnahmen</div>
-          <div class="me-row">
-            <select class="status-select ok" onchange="updateGoalMeasure(3,1,0,'status',this.value)"><option value="ok" selected="">✓</option><option value="warn">⚠</option><option value="crit">✗</option><option value="n">○</option></select>
-            <input type="text" value="Begleitendes Coaching Kundenservice" onchange="updateGoalMeasure(3,1,0,'text',this.value)">
-            <select onchange="updateGoalMeasure(3,1,0,'type',this.value)"><option value="fr" selected="">Früh</option><option value="sp">Spät</option></select>
-            <span></span><button class="del-btn" onclick="deleteGoalMeasure(3,1,0)">✕</button>
-          </div><div class="me-row">
-            <select class="status-select ok" onchange="updateGoalMeasure(3,1,1,'status',this.value)"><option value="ok" selected="">✓</option><option value="warn">⚠</option><option value="crit">✗</option><option value="n">○</option></select>
-            <input type="text" value="Skill based Learning — Team Leads" onchange="updateGoalMeasure(3,1,1,'text',this.value)">
-            <select onchange="updateGoalMeasure(3,1,1,'type',this.value)"><option value="fr" selected="">Früh</option><option value="sp">Spät</option></select>
-            <span></span><button class="del-btn" onclick="deleteGoalMeasure(3,1,1)">✕</button>
-          </div><div class="me-row">
-            <select class="status-select ok" onchange="updateGoalMeasure(3,1,2,'status',this.value)"><option value="ok" selected="">✓</option><option value="warn">⚠</option><option value="crit">✗</option><option value="n">○</option></select>
-            <input type="text" value="KVP — Kontinuierlicher Verbesserungsprozess" onchange="updateGoalMeasure(3,1,2,'text',this.value)">
-            <select onchange="updateGoalMeasure(3,1,2,'type',this.value)"><option value="fr" selected="">Früh</option><option value="sp">Spät</option></select>
-            <span></span><button class="del-btn" onclick="deleteGoalMeasure(3,1,2)">✕</button>
-          </div>
-          <button class="add-btn" onclick="addGoalMeasure(3,1)">+ Maßnahme</button>
-        </div>
-    </div></div>
+  <div id="editContent"></div>
 </div>
 
 <!-- ===== CORP: PRÄSENTATION ===== -->
 <div class="main section hidden" id="sec-presentation">
-  <div id="presContent">
-    <div style="display:flex;align-items:center;justify-content:space-between;padding-bottom:14px;margin-bottom:18px;border-bottom:2px solid var(--accent);flex-wrap:wrap;gap:10px;">
-      <div><div style="font-size:20px;font-weight:700;">Stölner-Scorecard <span style="color:var(--accent);">2026</span></div><div style="font-size:11px;color:var(--muted);">Stölner GmbH · Strategie sichtbar machen · Stand 18. Juni 2026</div></div>
-      <div style="display:flex;gap:8px;">
-        <div style="text-align:center;padding:6px 14px;background:var(--ler-l);border-radius:8px;"><div style="font-size:20px;font-weight:700;color:var(--ler);">4</div><div style="font-size:9px;color:var(--muted);text-transform:uppercase;">Auf Kurs</div></div>
-        <div style="text-align:center;padding:6px 14px;background:var(--pro-l);border-radius:8px;"><div style="font-size:20px;font-weight:700;color:var(--pro);">9</div><div style="font-size:9px;color:var(--muted);text-transform:uppercase;">Im Plan</div></div>
-        <div style="text-align:center;padding:6px 14px;background:var(--fin-l);border-radius:8px;"><div style="font-size:20px;font-weight:700;color:var(--fin);">1</div><div style="font-size:9px;color:var(--muted);text-transform:uppercase;">Kritisch</div></div>
-      </div>
-    </div>
-    <div class="section-title">Finanzkennzahlen &amp; KPIs</div>
-    <div class="persp-block"><table style="width:100%;border-collapse:collapse;"><tbody><tr><td style="padding:8px 12px;font-size:12px;border-bottom:1px solid var(--border);">Gesamteinnahmen (Plan)</td>
-      <td style="padding:8px 12px;font-size:13px;font-weight:700;color:var(--ok);text-align:right;border-bottom:1px solid var(--border);">14,33 M <span style="font-size:10px;color:var(--muted);font-weight:400;">€</span></td>
-      <td style="padding:8px 12px;font-size:11px;color:var(--muted);text-align:right;border-bottom:1px solid var(--border);">Ziel 14,30 M €</td>
-      <td style="padding:8px 14px;border-bottom:1px solid var(--border);"><div style="width:100px;height:5px;background:var(--bg);border-radius:3px;overflow:hidden;"><div style="height:100%;width:100%;background:var(--ok);"></div></div></td></tr><tr><td style="padding:8px 12px;font-size:12px;border-bottom:1px solid var(--border);">EBIT</td>
-      <td style="padding:8px 12px;font-size:13px;font-weight:700;color:#BDC3C7;text-align:right;border-bottom:1px solid var(--border);">— <span style="font-size:10px;color:var(--muted);font-weight:400;">€</span></td>
-      <td style="padding:8px 12px;font-size:11px;color:var(--muted);text-align:right;border-bottom:1px solid var(--border);">Ziel 383 K €</td>
-      <td style="padding:8px 14px;border-bottom:1px solid var(--border);"><div style="width:100px;height:5px;background:var(--bg);border-radius:3px;overflow:hidden;"><div style="height:100%;width:0%;background:#BDC3C7;"></div></div></td></tr><tr><td style="padding:8px 12px;font-size:12px;border-bottom:1px solid var(--border);">Service-Umsatz</td>
-      <td style="padding:8px 12px;font-size:13px;font-weight:700;color:#BDC3C7;text-align:right;border-bottom:1px solid var(--border);">— <span style="font-size:10px;color:var(--muted);font-weight:400;">€</span></td>
-      <td style="padding:8px 12px;font-size:11px;color:var(--muted);text-align:right;border-bottom:1px solid var(--border);">Ziel 2,30 M €</td>
-      <td style="padding:8px 14px;border-bottom:1px solid var(--border);"><div style="width:100px;height:5px;background:var(--bg);border-radius:3px;overflow:hidden;"><div style="height:100%;width:0%;background:#BDC3C7;"></div></div></td></tr><tr><td style="padding:8px 12px;font-size:12px;border-bottom:1px solid var(--border);">Rohertrag</td>
-      <td style="padding:8px 12px;font-size:13px;font-weight:700;color:#BDC3C7;text-align:right;border-bottom:1px solid var(--border);">— <span style="font-size:10px;color:var(--muted);font-weight:400;">€</span></td>
-      <td style="padding:8px 12px;font-size:11px;color:var(--muted);text-align:right;border-bottom:1px solid var(--border);">Ziel 5,16 M €</td>
-      <td style="padding:8px 14px;border-bottom:1px solid var(--border);"><div style="width:100px;height:5px;background:var(--bg);border-radius:3px;overflow:hidden;"><div style="height:100%;width:0%;background:#BDC3C7;"></div></div></td></tr><tr><td style="padding:8px 12px;font-size:12px;border-bottom:1px solid var(--border);">HW-Vertrieb</td>
-      <td style="padding:8px 12px;font-size:13px;font-weight:700;color:#BDC3C7;text-align:right;border-bottom:1px solid var(--border);">— <span style="font-size:10px;color:var(--muted);font-weight:400;">€</span></td>
-      <td style="padding:8px 12px;font-size:11px;color:var(--muted);text-align:right;border-bottom:1px solid var(--border);">Ziel 12,00 M €</td>
-      <td style="padding:8px 14px;border-bottom:1px solid var(--border);"><div style="width:100px;height:5px;background:var(--bg);border-radius:3px;overflow:hidden;"><div style="height:100%;width:0%;background:#BDC3C7;"></div></div></td></tr><tr><td style="padding:8px 12px;font-size:12px;border-bottom:1px solid var(--border);">Materialkosten</td>
-      <td style="padding:8px 12px;font-size:13px;font-weight:700;color:#BDC3C7;text-align:right;border-bottom:1px solid var(--border);">— <span style="font-size:10px;color:var(--muted);font-weight:400;">€</span></td>
-      <td style="padding:8px 12px;font-size:11px;color:var(--muted);text-align:right;border-bottom:1px solid var(--border);">Ziel 9,24 M €</td>
-      <td style="padding:8px 14px;border-bottom:1px solid var(--border);"><div style="width:100px;height:5px;background:var(--bg);border-radius:3px;overflow:hidden;"><div style="height:100%;width:0%;background:#BDC3C7;"></div></div></td></tr><tr><td style="padding:8px 12px;font-size:12px;border-bottom:1px solid var(--border);">NPS Kundenzufriedenheit</td>
-      <td style="padding:8px 12px;font-size:13px;font-weight:700;color:var(--warn);text-align:right;border-bottom:1px solid var(--border);">52,3 <span style="font-size:10px;color:var(--muted);font-weight:400;">Pkt.</span></td>
-      <td style="padding:8px 12px;font-size:11px;color:var(--muted);text-align:right;border-bottom:1px solid var(--border);">Ziel 65 Pkt.</td>
-      <td style="padding:8px 14px;border-bottom:1px solid var(--border);"><div style="width:100px;height:5px;background:var(--bg);border-radius:3px;overflow:hidden;"><div style="height:100%;width:81%;background:var(--warn);"></div></div></td></tr><tr><td style="padding:8px 12px;font-size:12px;border-bottom:1px solid var(--border);">MA-Zufriedenheit (Teamecho)</td>
-      <td style="padding:8px 12px;font-size:13px;font-weight:700;color:var(--warn);text-align:right;border-bottom:1px solid var(--border);">68 <span style="font-size:10px;color:var(--muted);font-weight:400;">Pkt.</span></td>
-      <td style="padding:8px 12px;font-size:11px;color:var(--muted);text-align:right;border-bottom:1px solid var(--border);">Ziel 75 Pkt.</td>
-      <td style="padding:8px 14px;border-bottom:1px solid var(--border);"><div style="width:100px;height:5px;background:var(--bg);border-radius:3px;overflow:hidden;"><div style="height:100%;width:91%;background:var(--warn);"></div></div></td></tr></tbody></table></div>
-    <div class="section-title">Strategische Ziele</div><div class="persp-block"><div class="persp-head"><span class="persp-badge fin">Finanzen</span><span class="persp-leitfrage">Verdienen wir gut, wirtschaften wir solide?</span><span class="ml-auto" style="font-size:11px;color:var(--muted);">✓ 1 · ⚠ 3 · ✗ 0</span></div>
-      <div style="padding:6px 14px 12px;"><div style="display:flex;align-items:center;gap:10px;padding:6px 0;border-bottom:1px solid var(--border);"><span style="width:9px;height:9px;border-radius:50%;background:var(--warn);flex-shrink:0;"></span><span style="font-size:13px;font-weight:600;">EBIT steigern</span><span style="font-size:11px;color:var(--muted);">Ziel 2026: 382.532 € (+8% vs. 2025)</span></div><div style="display:flex;align-items:center;gap:10px;padding:6px 0;border-bottom:1px solid var(--border);"><span style="width:9px;height:9px;border-radius:50%;background:var(--warn);flex-shrink:0;"></span><span style="font-size:13px;font-weight:600;">Umsatz steigern</span><span style="font-size:11px;color:var(--muted);">Betriebsleistung / Gesamteinnahmen</span></div><div style="display:flex;align-items:center;gap:10px;padding:6px 0;border-bottom:1px solid var(--border);"><span style="width:9px;height:9px;border-radius:50%;background:var(--warn);flex-shrink:0;"></span><span style="font-size:13px;font-weight:600;">Deckungsbeitrag erhöhen</span><span style="font-size:11px;color:var(--muted);">Rohertrag Ziel: 5,16 Mio. € (+0,3%)</span></div><div style="display:flex;align-items:center;gap:10px;padding:6px 0;border-bottom:1px solid var(--border);"><span style="width:9px;height:9px;border-radius:50%;background:var(--ok);flex-shrink:0;"></span><span style="font-size:13px;font-weight:600;">Cashflow optimieren</span><span style="font-size:11px;color:var(--muted);">Kosten senken &amp; Reporting</span></div></div></div><div class="persp-block"><div class="persp-head"><span class="persp-badge kun">Kunden</span><span class="persp-leitfrage">Sind unsere Kunden zufrieden, kommen sie wieder?</span><span class="ml-auto" style="font-size:11px;color:var(--muted);">✓ 0 · ⚠ 3 · ✗ 1</span></div>
-      <div style="padding:6px 14px 12px;"><div style="display:flex;align-items:center;gap:10px;padding:6px 0;border-bottom:1px solid var(--border);"><span style="width:9px;height:9px;border-radius:50%;background:var(--warn);flex-shrink:0;"></span><span style="font-size:13px;font-weight:600;">Bekanntheitsgrad steigern</span><span style="font-size:11px;color:var(--muted);">Marketing &amp; Sichtbarkeit</span></div><div style="display:flex;align-items:center;gap:10px;padding:6px 0;border-bottom:1px solid var(--border);"><span style="width:9px;height:9px;border-radius:50%;background:var(--warn);flex-shrink:0;"></span><span style="font-size:13px;font-weight:600;">Web-Shop weiter ausbauen</span><span style="font-size:11px;color:var(--muted);">E-Commerce Excellence</span></div><div style="display:flex;align-items:center;gap:10px;padding:6px 0;border-bottom:1px solid var(--border);"><span style="width:9px;height:9px;border-radius:50%;background:var(--warn);flex-shrink:0;"></span><span style="font-size:13px;font-weight:600;">Restposten Lager Abverkauf</span><span style="font-size:11px;color:var(--muted);">Lagerbereinigung &amp; Liquidität</span></div><div style="display:flex;align-items:center;gap:10px;padding:6px 0;border-bottom:1px solid var(--border);"><span style="width:9px;height:9px;border-radius:50%;background:var(--crit);flex-shrink:0;"></span><span style="font-size:13px;font-weight:600;">Social Media Campaigning</span><span style="font-size:11px;color:var(--muted);">Digitale Reichweite aufbauen</span></div></div></div><div class="persp-block"><div class="persp-head"><span class="persp-badge pro">Prozesse</span><span class="persp-leitfrage">Setzen wir das um, was wir uns vornehmen?</span><span class="ml-auto" style="font-size:11px;color:var(--muted);">✓ 2 · ⚠ 2 · ✗ 0</span></div>
-      <div style="padding:6px 14px 12px;"><div style="display:flex;align-items:center;gap:10px;padding:6px 0;border-bottom:1px solid var(--border);"><span style="width:9px;height:9px;border-radius:50%;background:var(--ok);flex-shrink:0;"></span><span style="font-size:13px;font-weight:600;">Operational Excellence</span><span style="font-size:11px;color:var(--muted);">Prozessoptimierung &amp; CRM</span></div><div style="display:flex;align-items:center;gap:10px;padding:6px 0;border-bottom:1px solid var(--border);"><span style="width:9px;height:9px;border-radius:50%;background:var(--warn);flex-shrink:0;"></span><span style="font-size:13px;font-weight:600;">Qualitätsmanagement</span><span style="font-size:11px;color:var(--muted);">Standards &amp; Servicephilosophie</span></div><div style="display:flex;align-items:center;gap:10px;padding:6px 0;border-bottom:1px solid var(--border);"><span style="width:9px;height:9px;border-radius:50%;background:var(--ok);flex-shrink:0;"></span><span style="font-size:13px;font-weight:600;">Standardisiertes Reporting</span><span style="font-size:11px;color:var(--muted);">Controlling — Kennzahlen &amp; Cashflow</span></div><div style="display:flex;align-items:center;gap:10px;padding:6px 0;border-bottom:1px solid var(--border);"><span style="width:9px;height:9px;border-radius:50%;background:var(--warn);flex-shrink:0;"></span><span style="font-size:13px;font-weight:600;">CRM Einkauf (SRM)</span><span style="font-size:11px;color:var(--muted);">Lieferantenmanagement &amp; Transparenz</span></div></div></div><div class="persp-block"><div class="persp-head"><span class="persp-badge ler">Lernen &amp; Entwickeln</span><span class="persp-leitfrage">Werden wir besser, wachsen wir als Mannschaft?</span><span class="ml-auto" style="font-size:11px;color:var(--muted);">✓ 1 · ⚠ 1 · ✗ 0</span></div>
-      <div style="padding:6px 14px 12px;"><div style="display:flex;align-items:center;gap:10px;padding:6px 0;border-bottom:1px solid var(--border);"><span style="width:9px;height:9px;border-radius:50%;background:var(--warn);flex-shrink:0;"></span><span style="font-size:13px;font-weight:600;">Mitarbeiterzufriedenheit</span><span style="font-size:11px;color:var(--muted);">Teamecho: Ist 68 → Ziel 75 Pkt.</span></div><div style="display:flex;align-items:center;gap:10px;padding:6px 0;border-bottom:1px solid var(--border);"><span style="width:9px;height:9px;border-radius:50%;background:var(--ok);flex-shrink:0;"></span><span style="font-size:13px;font-weight:600;">Qualifizierung Mitarbeiter</span><span style="font-size:11px;color:var(--muted);">Regelmäßige Aus- &amp; Weiterbildung</span></div></div></div>
-    <div class="section-title">Acht Team-Goalcards (Ebene 2)</div><div class="persp-block" style="padding:6px 16px 10px;"><div style="display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:1px solid var(--border);"><span style="font-size:13px;font-weight:700;width:120px;">Walter</span><span style="font-size:11px;color:var(--muted);flex:1;">Einkauf &amp; Logistik</span><span style="font-size:11px;font-weight:600;color:var(--muted);">0 Goalcards</span></div><div style="display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:1px solid var(--border);"><span style="font-size:13px;font-weight:700;width:120px;">Sabrina</span><span style="font-size:11px;color:var(--muted);flex:1;">Vertriebsinnendienst</span><span style="font-size:11px;font-weight:600;color:var(--muted);">0 Goalcards</span></div><div style="display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:1px solid var(--border);"><span style="font-size:13px;font-weight:700;width:120px;">Christian</span><span style="font-size:11px;color:var(--muted);flex:1;">Qualitätsmanagement Kundenservice</span><span style="font-size:11px;font-weight:600;color:var(--muted);">0 Goalcards</span></div><div style="display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:1px solid var(--border);"><span style="font-size:13px;font-weight:700;width:120px;">Thomas</span><span style="font-size:11px;color:var(--muted);flex:1;">Marketing</span><span style="font-size:11px;font-weight:600;color:var(--muted);">0 Goalcards</span></div><div style="display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:1px solid var(--border);"><span style="font-size:13px;font-weight:700;width:120px;">Gerhard</span><span style="font-size:11px;color:var(--muted);flex:1;">Vertrieb Fachhandel</span><span style="font-size:11px;font-weight:600;color:var(--muted);">0 Goalcards</span></div><div style="display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:1px solid var(--border);"><span style="font-size:13px;font-weight:700;width:120px;">Klaus</span><span style="font-size:11px;color:var(--muted);flex:1;">Vertrieb HoReCa direkt</span><span style="font-size:11px;font-weight:600;color:var(--muted);">0 Goalcards</span></div><div style="display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:1px solid var(--border);"><span style="font-size:13px;font-weight:700;width:120px;">Wolfgang</span><span style="font-size:11px;color:var(--muted);flex:1;">Vertrieb Speiseeistechnik</span><span style="font-size:11px;font-weight:600;color:var(--muted);">0 Goalcards</span></div><div style="display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:1px solid var(--border);"><span style="font-size:13px;font-weight:700;width:120px;">Othmar</span><span style="font-size:11px;color:var(--muted);flex:1;">Technik</span><span style="font-size:11px;font-weight:600;color:var(--ler);">1 Goalcard</span></div></div></div>
+  <div id="presContent"></div>
 </div>
 
 <!-- ===== CORP: ARCHIV ===== -->
@@ -922,11 +263,7 @@ textarea{resize:vertical;}
     <h2 style="font-size:16px;font-weight:600;">Jahresarchiv</h2>
     <button class="btn btn-primary" onclick="showNewYearForm()">+ Neues Jahr anlegen</button>
   </div>
-  <div class="archiv-grid" id="archivGrid"><div class="archiv-card active-year"><div class="archiv-year">2026</div>
-      <div style="font-size:11px;color:var(--muted);margin-top:2px;">14 strategische Ziele</div>
-      <div class="archiv-stats"><span class="archiv-stat ok">✓ 4</span><span class="archiv-stat warn">⚠ 9</span><span class="archiv-stat crit">✗ 1</span></div>
-      <div style="display:flex;gap:8px;margin-top:10px;"><button class="btn btn-sm" onclick="switchYear('2026');selectLevel('corp')">Öffnen</button></div>
-    </div></div>
+  <div class="archiv-grid" id="archivGrid"></div>
   <div id="newYearForm" class="new-year-form hidden">
     <h3 style="font-size:14px;margin-bottom:12px;">Neues Geschäftsjahr anlegen</h3>
     <div class="grid2">
@@ -946,9 +283,9 @@ textarea{resize:vertical;}
     </div>
   </div>
   <div class="section-title">Fahrplan nach dem Offsite</div>
-  <div class="info-card" id="roadmapCard"><div class="rm-row"><div class="rm-when">9. Juli abends</div><div class="rm-what">Goalcard-Rohfassung in der Hand — 3–5 Schwerpunkte je Team, aus den Säulen abgeleitet.</div></div><div class="rm-row"><div class="rm-when">Bis Ende Juli</div><div class="rm-what">Karte mit der GF schärfen — ein Vormittag pro Team. Aus der Rohfassung wird die finale Karte 2026.</div></div><div class="rm-row"><div class="rm-when">Ab August</div><div class="rm-what">Monatsroutine: 30–60 Min/Monat pro TL mit der GF — Status pro Schwerpunkt, was hakt, was als Nächstes.</div></div><div class="rm-row"><div class="rm-when">Q4 / November</div><div class="rm-what">Erstes gemeinsames Review — alle Karten auf einem Tisch, ein Vormittag im Führungsteam.</div></div><div class="rm-row"><div class="rm-when">2027</div><div class="rm-what">Sichtbar für alle Mitarbeitenden — erst wenn die Karten in Ruhe gelebt sind.</div></div></div>
+  <div class="info-card" id="roadmapCard"></div>
   <div class="section-title">Fünf Versprechen</div>
-  <div class="info-card" id="promiseCard"><div class="promise"><span class="rm-when">1.</span><div class="rm-what"><b>Wir setzen ambitionierte Ziele</b> — Solche, die uns fordern, ohne uns zu überfordern. Keine Wohlfühl-Karten, keine Pflichtübung.</div></div><div class="promise"><span class="rm-when">2.</span><div class="rm-what"><b>Wir sind verbindlich</b> — Was wir auf die Karte schreiben, halten wir. Wenn etwas nicht mehr geht, sprechen wir es vorher an.</div></div><div class="promise"><span class="rm-when">3.</span><div class="rm-what"><b>Wir sind ehrlich</b> — Rote Ampeln sind kein Versagen, sondern Steuerung. Wer im Mai sagt »das wird nichts«, hat geliefert.</div></div><div class="promise"><span class="rm-when">4.</span><div class="rm-what"><b>Verantwortung &amp; Schutz</b> — Wir nehmen einander in Verantwortung und in Schutz. Niemand wird vorgeführt.</div></div><div class="promise"><span class="rm-when">5.</span><div class="rm-what"><b>Feiern &amp; Lernen</b> — Wir feiern, was gelingt, und lernen aus dem, was nicht gelingt. Beides.</div></div></div>
+  <div class="info-card" id="promiseCard"></div>
 </div>
 
 <!-- ===== TEAM: GOALCARDS (Ebene 2) ===== -->
@@ -963,7 +300,7 @@ textarea{resize:vertical;}
   <div id="teamEditContent"></div>
 </div>
 
-<div class="toast show" id="toast">✓ Gespeichert</div>
+<div class="toast" id="toast">✓ Gespeichert</div>
 
 <script>
 const STORAGE_KEY = 'stoelner_bsc_2level_v2';
@@ -1444,6 +781,5 @@ function downloadUpdated(){
 loadData();
 render();
 </script>
-
-
-</body></html>
+</body>
+</html>
